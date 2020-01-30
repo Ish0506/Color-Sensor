@@ -1,0 +1,71 @@
+int avg;
+int rgb[] = {0, 0, 0};
+int whiteBalance[] = {0, 0, 0};
+int blackBalance[] = {0, 0, 0};
+float color[] = {0, 0, 0};
+
+void setup() {
+  calibration = false;
+  led.begin();                                  // Initialize 
+  Serial.begin(9600);                           // Begin the Serial communication
+  led.Color(0, 0, 0);                            // Turn off the LED
+  led.show();                                   // Show new values
+  delay(6000);                                  // Delay some time 
+}
+void loop() {
+  if (calibration == false) {
+    colorSeq(0);
+    getWhite();                   // fetch RGB values from a white surface
+    colorSeq(0);
+    getBlack();                   // fetch values from a black surface
+    colorSeq(1);
+    calibration = true;           // Mark the calibration 
+  }
+  getColor(5);                    // Measure RGB values from a pointed surface. 
+  printColor();                   // Print the RGB value
+}
+
+void fetchWhite() {                         // fetch values from a white surface
+  Serial.println("white:");
+  for (int i = 0; i <= 2; i++) {
+    int rgb[] = {0, 0, 0};
+    if (i == 0) {
+      rgb[0] = 255;
+    }
+    else if (i == 1) {
+      rgb[1] = 255;
+    }
+    else if (i == 2) {
+      rgb[2] = 255;
+    }
+    led.Color(rgb[0], rgb[1], rgb[2]);
+    led.show();
+    delay(20);
+    getReadings(bnwTimes);
+    whiteBalance[i] = avg;
+    Serial.println(whiteBalance[i]);
+    
+  }
+}
+
+void fetchBlack() {                                   // fetch values from a black surface
+  Serial.println("Black:");
+  for (int i = 0; i <= 2; i++) {
+    int rgb[] = {0, 0, 0};
+    if (i == 0) {
+      rgb[0] = 255;
+    }
+    else if (i == 1) {
+      rgb[1] = 255;
+    }
+    else if (i == 2) {
+      rgb[2] = 255;
+    }
+   led.Color(rgb[0], rgb[1], rgb[2]);
+    led.show();
+    delay(20);
+    getReadings(bnwTimes);
+    blackBalance[i] = avg;
+    Serial.println(blackBalance[i]);
+  }
+}
