@@ -13,3 +13,30 @@ LDR can be used to measure the intensity of light. The resistance between the tw
 The targeted surface is illuminated only by the RGB LED. Depending on the surface texture and the color the reflected intensity was reduced. Since a white surface will reflect every wavelength, intensity readings from a white surface is the highest reading among any other color on that particular surface and, lowest on a black colored surface.
 During the calibration process the microcontroller will store the light intensity readings from the LDR for red, green and blue colors which is reflected from white and black color. These values are the highest and lowest values for that surface. Any readings taken should be in between these values.
 When an RGB color reading was obtained from a surface the program will compare that values with the white and black values which was stored during the calibration and decides the color.
+ 
+ For this sensor you will need:
+a breadboard (not required, but it is how I will walk you through it.)
+an RGB LED (alternatively you could use 3 LEDs)
+A 220 ohm resistors
+An Arduino
+I have included both images of the breadboard arrangment, and a small diagram to show you how to wire up the sensor to the Arduino.
+The circuit is really simple. First we will look at the RGB LED half of the sensor. It is simply a common cathode RGB LED connected to pins 2,3, and 4 of the Arduino with a 220 ohm resistor going out to ground. This will allow us to turn each of the LEDs within the package on and off individually when we need to.    
+  This sensor works great on a breadboard, but it works even better if you put it into a more permanent enclosure to minimilize ambient light interference. The photo of the light tight (ish) enclosure was used in another one of my projects and is included here only to illustrate what I meant. (Feel free to check it out though, here.)     
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
