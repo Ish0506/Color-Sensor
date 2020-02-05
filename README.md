@@ -21,7 +21,7 @@ A 220 ohm resistors
 An Arduino
 I have included both images of the breadboard arrangment, and a small diagram to show you how to wire up the sensor to the Arduino.
 The circuit is really simple. First we will look at the RGB LED half of the sensor. It is simply a common cathode RGB LED connected to pins 2,3, and 4 of the Arduino with a 220 ohm resistor going out to ground. This will allow us to turn each of the LEDs within the package on and off individually when we need to.    
-  This sensor works great on a breadboard, but it works even better if you put it into a more permanent enclosure to minimilize ambient light interference. The photo of the light tight (ish) enclosure was used in another one of my projects and is included here only to illustrate what I meant. (Feel free to check it out though, here.)     
+  This sensor works great on a breadboard, but it works even better if you put it into a more permanent enclosure to minimilize ambient light.
        
        
        
